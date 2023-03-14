@@ -44,7 +44,7 @@ class BlogController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hass::make($request->password);
+        $user->password = Hash::make($request->password);
 
         $user->save();    
 
@@ -54,9 +54,9 @@ class BlogController extends Controller
     }
 
 
-    public function dashboarView() {
+    public function dashboardView() {
 
-        return view('dashboard', ['posts' => Post::all()]);
+        return view('dashboard', ['posts' => Post::all(), 'users' => User::all()]);
     }
 
 
@@ -89,7 +89,7 @@ class BlogController extends Controller
 
     public function newAnswer(Request $request) {
 
-        return view('answer', ['post' => $request]);
+        return view('answer', ['post_id' => $request->post_id]);
     }
 
 

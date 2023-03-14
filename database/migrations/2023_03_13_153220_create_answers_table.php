@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
-            ->references('user_id')
-            ->on('posts')
+            ->references('id')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->foreignId('post_id')
