@@ -13,11 +13,10 @@
     @inject('userClass', 'App\Models\User')
     @foreach ($posts as $post)
         <div>
-            <p>Topic:   {{ $post->title }}</p>         
+            <p>Topic:  {{ $post->title }}</p>         
             <p>Author: {{ ($userClass->find($post->user_id))->name }}</p>
-            <p>Date:  {{ $post->created_at }}</p>
+            <p>Date:   {{ $post->created_at }}</p>
             <form method="get" action="{{route('newanswer')}}">
-                @csrf
                 <input type="hidden" name="post_id" value="{{$post->id}}">            
                 <input type="submit" value="answer">
                 <br>
